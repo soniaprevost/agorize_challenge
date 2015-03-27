@@ -1,0 +1,12 @@
+<h1>hello</h1>
+
+<%#= BoxView::Document.list %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="text-center">
+        <iframe src="<%= BoxView::Session.viewer_url %>" width="800" height="600" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+      </div>
+    </div>
+  </div>
+</div>

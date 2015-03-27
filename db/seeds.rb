@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+BoxView.api_key = "rqe276misw58yqwopzrc8qf38sdhwio8"
+
+puts BoxView::Document.list
