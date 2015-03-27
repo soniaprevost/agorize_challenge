@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 BoxView::Document.create(
-  url: 'http://seriousmonkeybusiness.com/chimpanzee.docx',
+  url: 'http://www.sraticongres.ro/download-files/uPoGPpb.ppt',
   name: 'chimpanzee',
   non_svg: true,
   width: 100,
