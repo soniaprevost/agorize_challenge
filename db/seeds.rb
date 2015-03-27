@@ -5,6 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-BoxView.api_key = "rqe276misw58yqwopzrc8qf38sdhwio8"
+BoxView::Document.create(
+  url: 'http://seriousmonkeybusiness.com/chimpanzee.docx',
+  name: 'chimpanzee',
+  non_svg: true,
+  width: 100,
+  height: 100)
 
-puts BoxView::Document.list
+
+Document.create!(name: "Mon super title", box_view_id: BoxView.document_id)
+

@@ -1,23 +1,16 @@
 class DocumentsController < ApplicationController
 
-  def create
-    BoxView.api_key = "rqe276misw58yqwopzrc8qf38sdhwio8"
+  def index
+    @documents = Document.all
+  end
 
-    BoxView::Document.create({
-      url: 'http://www.sraticongres.ro/download-files/uPoGPpb.ppt',
-      name: 'How to create a Ppt',
-      })
-
-    documentid = BoxView.document_id
-
-    BoxView::Session.create({
-      document_id: documentid,
+  def show
+    @document = Document.find(params[:id])
+    BoxView::Session.create(
+      document_id: @document.box_view_id,
       duration: 100,
-      expiration_date: (Time.now + 100.minutes),
-      is_downloadable: true
-      })
-
-    url = BoxView::Session.viewer_url
+      expiration_date: (Time.now + 10.minutes),
+      is_downloadable: true)
   end
 
 

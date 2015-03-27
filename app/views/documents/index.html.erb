@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <% @documents.each do |document| %>
+        <%= link_to document.name, document_path(document) %>
+      <% end %>
+    </div>
+  </div>
+</div>

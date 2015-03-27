@@ -4,12 +4,10 @@ require 'json'
 class PagesController < ApplicationController
 
   def home
-    BoxView.api_key = ENV['BOX_VIEW_API_KEY']
-
     BoxView::Session.create(
-      document_id: '3c6bfbe3383d4c369f14cf356bf2a591',
+      document_id: Document.last.box_view_id,
       duration: 100,
-      expiration_date: (Time.now + 100.hours),
+      expiration_date: (Time.now + 10.minutes),
       is_downloadable: true)
   end
 
