@@ -9,7 +9,7 @@ class DocumentsController < ApplicationController
     BoxView::Session.create(
       document_id: @document.box_view_id,
       duration: 100,
-      expiration_date: (Time.now + 10.minutes),
+      expiration_date: (Time.now + 100.hours),
       is_downloadable: true)
   end
 
