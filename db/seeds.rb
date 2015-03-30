@@ -13,5 +13,5 @@ BoxView::Document.create(
   height: 100)
 
 
-Document.create!(name: "Mon super title", box_view_id: BoxView.document_id)
+Document.create!(name: "Challenge Agorize", box_view_id: BoxView.document_id)
 

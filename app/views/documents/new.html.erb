@@ -1,8 +1,13 @@
-<%= simple_form_for(@document, html: { multipart: true }) do |f| %>
-  <!-- ... -->
-  <p>
-    <%= f.input :name, label: 'Title of your document' %>
-    <%= f.input :doc, label: 'Attach file' %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+<div class="bg-black mini-height">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="card">
+          <div class="margin-space text-center">
+            <%= render 'shared/new' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

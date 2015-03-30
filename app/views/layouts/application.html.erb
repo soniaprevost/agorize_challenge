@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield(:title) || "Your App name" %></title>
+  <title><%= yield(:title) || "Challenge Agorize" %></title>
   <meta name="description" content="<%= (yield(:description) || "").squish %>">  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+  <body>
 
-<%= yield %>
+    <%= yield %>
 
-<%= javascript_include_tag 'application' %>
-<%= yield(:after_js) %>
+    <%= javascript_include_tag 'application' %>
+    <%= yield(:after_js) %>
 
-</body>
+  </body>
 </html>

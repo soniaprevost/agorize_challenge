@@ -1,14 +1,34 @@
-<h1>hello</h1>
+<% content_for(:title, "Accueil") %>
 
 <%#= BoxView::Document.list %>
 <div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="text-center">
-        <!-- a transparent image is preferable -->
-        <!-- <img class="ratio" src="http://placehold.it/16x9"/> -->
-        <%#= BoxView::Session.viewer_url %>
-<!--         <iframe src="<%#= BoxView::Session.viewer_url %>" width="800" height="600" frameborder="0" allowfullscreen="allowfullscreen"></iframe> -->
+  <div class="margin-top-neg">
+    <div class="row">
+      <div class="padded">
+        <div class="col-sm-6">
+          <div class="text-center card bg-yellow small-padded">
+            <h2>Challenge Agorize</h2>
+              <div class="small-padded">
+                <%= link_to "View", document_path(Document.find(3)), class:"btn btn-success" %>
+              </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="text-center card bg-orange small-padded">
+            <h2>Let's upload!</h2>
+            <div class="small-padded">
+              <%= link_to "Add a Powerpoint file", new_document_path, class: "btn btn-success" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="text-center card bg-blue small-padded">
+            <div class="small-padded">
+              <h2>View all</h2>
+              <%= link_to '<i class="fa fa-angle-double-right"></i>'.html_safe, documents_path, class:"btn btn-success" %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

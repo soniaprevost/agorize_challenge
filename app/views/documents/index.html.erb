@@ -1,13 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6">
-      <% @documents.each do |document| %>
-        <%= link_to document.name, document_path(document) %>
-      <% end %>
-
-      <h3>Add a file</h3>
-      <%= link_to "Add new", new_document_path %>
-
+    <div class="col-sm-12">
+      <div class="text-center small-padded">
+        <%= link_to '<i class="fa fa-home"></i>'.html_safe, root_path %>
+      </div>
     </div>
+    <% @documents.each do |document| %>
+      <div class="col-sm-6">
+        <div class="text-center small-padded">
+          <h3><%= link_to document.name.upcase, document_path(document) %></h3>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -1,13 +1,13 @@
-<h1>hello</h1>
-
-<%#= BoxView::Document.list %>
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
+      <div class="text-center small-padded">
+        <%= link_to '<i class="fa fa-home"></i>'.html_safe, root_path %>
+      </div>
+    </div>
+    <div class="col-sm-12">
       <div class="text-center">
         <div class="embed-responsive embed-responsive-4by3">
-        <!-- <img class="ratio" src="http://placehold.it/16x9"/> -->
-          <%= BoxView::Session.viewer_url %>
           <iframe class="embed-responsive-item" src="<%= BoxView::Session.viewer_url %>" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
         </div>
       </div>
