@@ -15,9 +15,11 @@ gem 'rails', '4.2.0'
 gem 'rails_12factor', group: :production
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'simple_form'
+gem 'simple_form', '~> 3.1.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'rest-client', '~> 1.8.0'
+gem 'aws-sdk', '< 2.0'
+gem 'paperclip', '~> 4.2.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
