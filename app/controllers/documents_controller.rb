@@ -17,6 +17,7 @@ class DocumentsController < ApplicationController
         name: @document.name)
       @document.box_view_id = BoxView.document_id
 
+
       redirect_to documents_path
     else
       render :new
