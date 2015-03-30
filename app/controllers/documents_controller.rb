@@ -12,6 +12,11 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
 
     if @document.save
+      BoxView::Document.create(
+        url: @document.doc.url,
+        name: @document.name)
+      @document.box_view_id = BoxView.document_id
+
       redirect_to documents_path
     else
       render :new
@@ -31,6 +36,6 @@ class DocumentsController < ApplicationController
   private
 
   def document_params
-    params.require(:document).permit(:name, :file)
+    params.require(:document).permit(:name, :doc)
   end
 end

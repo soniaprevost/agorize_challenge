@@ -1,8 +1,8 @@
 <%= simple_form_for(@document, html: { multipart: true }) do |f| %>
   <!-- ... -->
   <p>
-    <%= f.input :name, label: 'Name of pet' %>
-    <%= f.input :file, label: 'Attach file' %>
+    <%= f.input :name, label: 'Title of your document' %>
+    <%= f.input :doc, label: 'Attach file' %>
   </p>
   <p><%= f.submit %></p>
 <% end %>
