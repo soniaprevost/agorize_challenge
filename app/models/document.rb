@@ -1,13 +1,6 @@
 class Document < ActiveRecord::Base
 
-  has_attached_file :doc,
-                    storage: :s3,
-                    s3_credentials: {
-                      bucket: ENV['S3_BUCKET_NAME'],
-                      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-                      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-                    },
-                    path: "/:rails_env/:filename"
+  has_attached_file :doc
 
   validates_attachment_content_type :doc, content_type: [
     'application/pdf',
@@ -17,4 +10,45 @@ class Document < ActiveRecord::Base
     "application/vnd.ms-powerpoint",
     "application/vnd.openxmlformats-officedocument.presentationml.presentation"
   ]
+
+  def box_view_url
+    box_document = generate_box_document
+    generate_box_session(box_document['id'])
+  end
+
+  def generate_box_document
+    HTTParty.post('https://view-api.box.com/1/documents',
+      headers: {
+        'Authorization' => "Token #{ENV['BOX_VIEW_API_KEY']}",
+        'Content-Type' => 'application/json',
+      },
+      body:
+      {
+        url: doc.url,
+        name: doc.name
+      }.to_json
+    )
+  end
+
+  def generate_box_session(document_id)
+    session = HTTParty.post('https://view-api.box.com/1/sessions',
+      headers: {
+        'Authorization' => "Token #{ENV['BOX_VIEW_API_KEY']}",
+        'Content-Type' => 'application/json',
+      },
+      body: {
+        document_id: document_id,
+        expires_at: 90.days.from_now,
+        is_downloadable: true,
+      }.to_json
+    )
+
+    if session.response.code == '201'
+      self.update_columns(:box_view_id, session.response['urls']['view'])
+    elsif session.response.code == '202'
+      generate_box_session(document_id)
+    end
+    raise session.inspect
+  end
+
 end
