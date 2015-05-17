@@ -12,11 +12,6 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
 
     if @document.save
-      BoxView::Document.create(
-        url: @document.doc.url,
-        name: @document.name)
-      @document.box_view_id = BoxView.document_id
-
       redirect_to document_path(@document)
     else
       render :new
@@ -24,14 +19,9 @@ class DocumentsController < ApplicationController
   end
 
 
+
   def show
-      @document = Document.find(params[:id])
-      # TODO implement the session creation with sidekick and create an autorefresh while process is undone
-    BoxView::Session.create(
-      document_id: @document.box_view_id,
-      duration: 100,
-      expiration_date: (Time.now + 100.hours),
-      is_downloadable: true)
+    @document = Document.find(params[:id])
   end
 
   private

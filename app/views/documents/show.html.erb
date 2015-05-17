@@ -6,10 +6,17 @@
       </div>
     </div>
     <div class="col-sm-12">
-      <div class="text-center">
-        <div class="embed-responsive embed-responsive-4by3">
-          <iframe class="embed-responsive-item" src="<%= BoxView::Session.viewer_url %>" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-        </div>
+      <div class="text-center" id="box">
+        <% if @document.box_view_id.present? %>
+          <div class="embed-responsive embed-responsive-4by3">
+            <iframe class="embed-responsive-item" src="<%= @document.box_view_id %>" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+          </div>
+        <% else %>
+          # <% @document.box_viewer %>
+          <p>Your document is loading... Refresh the page</p>
+          <div class="box_loader">
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
