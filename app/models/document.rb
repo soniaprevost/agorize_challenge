@@ -11,7 +11,12 @@ class Document < ActiveRecord::Base
     "application/vnd.openxmlformats-officedocument.presentationml.presentation"
   ]
 
-  def box_view_url
+  def box_viewer
+    return box_view_id if box_view_id.present?
+    self.generate_box_view_url
+  end
+
+  def generate_box_view_url
     box_document = generate_box_document
     generate_box_session(box_document['id'])
   end
@@ -44,11 +49,10 @@ class Document < ActiveRecord::Base
     )
 
     if session.response.code == '201'
-      self.update_columns(:box_view_id, session.response['urls']['view'])
+      self.update_column(:box_view_id, session['urls']['view'])
     elsif session.response.code == '202'
       generate_box_session(document_id)
     end
-    raise session.inspect
   end
 
 end

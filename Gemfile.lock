@@ -228,6 +228,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   figaro
   font-awesome-sass
+  httparty (~> 0.13.3)
   jbuilder (~> 2.0)
   jquery-rails
   paperclip (~> 4.2.1)
