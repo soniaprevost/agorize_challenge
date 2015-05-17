@@ -8,7 +8,9 @@ class Document < ActiveRecord::Base
     'application/vnd.oasis.opendocument.text',
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     "application/vnd.ms-powerpoint",
-    "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    "text/css",
+    "application/javascript",
   ]
 
   def box_viewer
